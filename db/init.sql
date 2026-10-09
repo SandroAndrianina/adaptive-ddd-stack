@@ -1,0 +1,1 @@
+-- Tables are generated at runtime by the Java SchemaGenerator (Step 2).

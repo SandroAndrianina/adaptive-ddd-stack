@@ -1,0 +1,25 @@
+# Env
+.env
+
+# Java / Maven
+java-service/target/
+*.class
+*.war
+
+# PHP / CI4
+php-app/vendor/
+php-app/writable/cache/*
+php-app/writable/logs/*
+php-app/writable/session/*
+php-app/writable/uploads/*
+php-app/writable/debugbar/*
+!php-app/writable/.gitkeep
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Docker volumes (if any local bind)
+db/data/

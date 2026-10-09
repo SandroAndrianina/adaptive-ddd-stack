@@ -1,0 +1,25 @@
+{
+  "entities": {
+    "scan": {
+      "table": "scans",
+      "fields": [
+        { "name": "id",              "type": "int",       "column": "id",               "primary": true, "auto": true },
+        { "name": "patientRef",      "type": "string",    "column": "patient_ref",      "required": true },
+        { "name": "zone",            "type": "string",    "column": "zone",             "default": "brain" },
+        { "name": "contrastUsed",    "type": "boolean",   "column": "contrast_used",    "default": false },
+        { "name": "signalIntensity", "type": "int",       "column": "signal_intensity", "default": 0 },
+        { "name": "resultat",        "type": "string",    "column": "resultat",         "default": "en_attente" },
+        { "name": "createdAt",       "type": "timestamp", "column": "created_at",       "autoCreate": true }
+      ]
+    },
+    "patient": {
+      "table": "patients",
+      "fields": [
+        { "name": "id",        "type": "int",    "column": "id",         "primary": true, "auto": true },
+        { "name": "fullName",  "type": "string", "column": "full_name",  "required": true },
+        { "name": "birthYear", "type": "int",    "column": "birth_year" },
+        { "name": "createdAt", "type": "timestamp", "column": "created_at", "autoCreate": true }
+      ]
+    }
+  }
+}
