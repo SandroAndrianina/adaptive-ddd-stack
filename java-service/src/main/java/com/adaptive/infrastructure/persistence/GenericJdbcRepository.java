@@ -134,6 +134,7 @@ public class GenericJdbcRepository {
         Map<String,Object> m = new LinkedHashMap<>();
         for (FieldDef f : def.fields) {
             Object v = rs.getObject(f.column);
+            if (v instanceof java.sql.Timestamp ts) v = ts.toString(); // "2026-10-09 08:23:50.0"
                 if ("boolean".equals(f.type) && v != null) {
                     if (v instanceof Boolean b)      v = b;
                     else if (v instanceof Number n)  v = n.intValue() != 0;

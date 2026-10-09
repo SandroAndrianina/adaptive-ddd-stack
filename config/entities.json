@@ -20,6 +20,15 @@
         { "name": "birthYear", "type": "int",    "column": "birth_year" },
         { "name": "createdAt", "type": "timestamp", "column": "created_at", "autoCreate": true }
       ]
+    },
+    "doctor": {
+    "table": "doctors",
+    "fields": [
+        { "name": "id",         "type": "int",    "column": "id",         "primary": true, "auto": true },
+        { "name": "fullName",   "type": "string", "column": "full_name",  "required": true },
+        { "name": "specialty",  "type": "string", "column": "specialty" },
+        { "name": "createdAt",  "type": "timestamp", "column": "created_at", "autoCreate": true }
+    ]
     }
   }
 }
