@@ -16,6 +16,7 @@ RUN apt-get update \
 # Raise upload limits
 RUN echo "upload_max_filesize=20M" > /usr/local/etc/php/conf.d/uploads.ini \
  && echo "post_max_size=25M"      >> /usr/local/etc/php/conf.d/uploads.ini
+RUN mkdir -p /var/www/html/writable/data /var/www/html/writable/uploads
 
 # Copy CI4 source
 COPY . /var/www/html/

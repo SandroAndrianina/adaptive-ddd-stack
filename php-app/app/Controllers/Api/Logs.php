@@ -10,15 +10,18 @@ class Logs extends BaseController
     public function create()
     {
         try {
-            $payload = $this->request->getJSON(true) ?? [];
-            $message = trim((string)($payload['message'] ?? ''));
+            $p       = $this->request->getJSON(true) ?? [];
+            $entity  = (string)($p['entity']  ?? '');
+            $action  = (string)($p['action']  ?? '');
+            $id      = (string)($p['id']      ?? '');
 
-            if ($message === '') {
+            if ($entity === '' || $action === '') {
                 return $this->response->setStatusCode(400)
-                    ->setJSON(['error' => 'message is required']);
+                    ->setJSON(['error' => 'entity and action are required']);
             }
 
-            (new ActivityLogService(new FileActivityLog()))->write($message);
+            $line = trim("$entity $action #$id");
+            (new ActivityLogService(new FileActivityLog()))->write($line);
 
             return $this->response->setJSON(['status' => 'ok']);
         } catch (\Throwable $e) {

@@ -134,9 +134,10 @@ public class GenericJdbcRepository {
         Map<String,Object> m = new LinkedHashMap<>();
         for (FieldDef f : def.fields) {
             Object v = rs.getObject(f.column);
-            if ("boolean".equals(f.type) && v != null) {
-                v = ((Number) v).intValue() != 0;
-            }
+                if ("boolean".equals(f.type) && v != null) {
+                    if (v instanceof Boolean b)      v = b;
+                    else if (v instanceof Number n)  v = n.intValue() != 0;
+                }
             m.put(f.name, v);
         }
         return m;
